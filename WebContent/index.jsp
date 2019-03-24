@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,16 +7,17 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
-
 </head>
 <body>
 	<jsp:useBean class="application.Calculator" id="object" scope="session" />
-	<form action="CalculatorServlet" method="POST">
+	<!--jsp:setProperty property="*" name="object"/-->
+	
+	<form action="CalculatorServlet" method="GET">
 		<div class="container">
-			<table class="table table-bordered">
+			<table>
 				<tr>
-					<td id="display" colspan="4"><jsp:getProperty property="value1"
-							name="object" /></td>
+					<td id="display" colspan="4"><jsp:getProperty property="result" name="object" /></td>
+							
 					<td><input class="operation" id="c" name="btn" type="submit" value="C" /></td>
 				</tr>
 				<tr>
@@ -51,5 +51,6 @@
 		</div>
 
 	</form>
+	<input style="color:white" type="text" value="${object.operation }" />
 </body>
 </html>

@@ -1,0 +1,44 @@
+
+body {
+	background-color: #111111;
+	font-size: 2em;
+	color: #111111;
+}
+
+.container {
+	background: #B2D3F0;
+	border: 1px solid #ffffff;
+	width: 24rem;
+	display: flex;
+	margin: auto;
+	align-items: center;
+	text-align: right;
+	flex-direction: column;
+	padding: 10px;
+}
+
+input {
+	background: #dddddd;
+	font-size: 2rem;
+	width: 4.5rem;
+	height: 4.5rem;
+	color: #ffffff;
+	border-radius: 10px;
+	border: 1px solid #ffffff;
+}
+
+#c {
+	color: red;
+	background: #666666;
+}
+
+#equals {
+	height: 9rem;
+}
+
+#display {
+	border: 1px solid #000000;
+	color: #000000;
+	background: #ffffff;
+	border-radius: 10px;
+}

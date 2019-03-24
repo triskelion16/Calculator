@@ -1,20 +1,27 @@
 package application;
 
 public class Calculator {
-	private String value1;
-	private String value2;
+	private String operation;
+	private String result;
 	
-	public String getValue1() {
-		return value1;
+	public Calculator() {
+		result = "";
+		operation = "";
 	}
-	public void setValue1(String value1) {
-		this.value1 = value1;
+	
+	public String getOperation() {
+		return operation;
 	}
-	public String getValue2() {
-		return value2;
-	}
-	public void setValue2(String value2) {
-		this.value2 = value2;
+	public void setOperation(String operation) {
+		this.operation = operation;
 	}
 
+	public String getResult() {
+		return result;
+	}
+	public void setResult(String result) {
+		this.result = result;
+	}
+	
+	
 }
