@@ -67,7 +67,13 @@ public class CalculatorServlet extends HttpServlet {
 						default:
 							
 							if("+".equals(calculator.getOperation())) {
-								calculator.setResult(Operations.add(calculator.getOldValue(), calculator.getResult()));
+								calculator.setResult(Operations.addition(calculator.getOldValue(), calculator.getResult()));
+							} else if("-".equals(calculator.getOperation())) {
+								calculator.setResult(Operations.subtraction(calculator.getOldValue(), calculator.getResult()));
+							} else if("*".equals(calculator.getOperation())) {
+								calculator.setResult(Operations.multiplication(calculator.getOldValue(), calculator.getResult()));
+							} else if("/".equals(calculator.getOperation())) {
+								calculator.setResult(Operations.division(calculator.getOldValue(), calculator.getResult()));
 							}
 								
 							calculator.setOldValue(calculator.getResult());
