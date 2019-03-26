@@ -40,17 +40,20 @@ public class CalculatorServlet extends HttpServlet {
 						} else {
 							calculator.setResult(calculator.getResult() + String.valueOf(number));
 						}
-						
-						
-						
 					} catch (Exception e) {
+						
 						switch (request.getParameter("btn")) {
 						case "C":
 							calculator.setResult("");
 							calculator.setOperation("");
+							calculator.setOldValue("");
 							break;
 						case ".":
-							calculator.setResult("."); // TO DO
+							if(calculator.getResult().equals("")) {
+								calculator.setResult("0.");
+							} else if(!calculator.getResult().contains(".")) {
+								calculator.setResult(calculator.getResult() + ".");
+							}
 							break;
 						case "%":
 							calculator.setResult(String.valueOf((Double)Double.parseDouble(calculator.getResult()) /100));
@@ -58,24 +61,28 @@ public class CalculatorServlet extends HttpServlet {
 						case "+/-":
 							calculator.setResult(String.valueOf(Integer.parseInt(calculator.getResult()) * -1));
 							break;
-						case "=":
-							calculator.setOperation(String.valueOf(Integer.parseInt(calculator.getResult())));
-							//calculator.setResult(String.valueOf(Integer.parseInt(calculator.getResult() + Integer.parseInt(request.getParameter("btn")))));
+						case "sqrt":
+							calculator.setResult(String.valueOf(Math.sqrt(Integer.parseInt(calculator.getResult()))));
 							break;
 						default:
+							
+							if("+".equals(calculator.getOperation())) {
+								calculator.setResult(Operations.add(calculator.getOldValue(), calculator.getResult()));
+							}
+								
+							calculator.setOldValue(calculator.getResult());
 							calculator.setOperation(request.getParameter("btn"));
-							calculator.setResult(calculator.getResult());
 							newNumber = true;
 							break;
 						}
 					}
+					
 				} catch (Exception e) {
 					calculator.setResult("ERROR");
 					RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/error.jsp");
 					requestDispatcher.forward(request, response);
 				}
 			}
-			
 		}
 		
 		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/index.jsp");

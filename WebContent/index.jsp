@@ -12,7 +12,7 @@
 	<jsp:useBean class="application.Calculator" id="object" scope="session" />
 	<!--jsp:setProperty property="*" name="object"/-->
 	
-	<form action="CalculatorServlet" method="GET">
+	<form action="CalculatorServlet" method="POST">
 		<div class="container">
 			<table>
 				<tr>
@@ -51,6 +51,8 @@
 		</div>
 
 	</form>
+	<input style="color:white" type="text" value="${object.oldValue }" />
 	<input style="color:white" type="text" value="${object.operation }" />
+	<input style="color:white" type="text" value="${object.result }" />
 </body>
 </html>

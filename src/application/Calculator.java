@@ -3,6 +3,7 @@ package application;
 public class Calculator {
 	private String operation;
 	private String result;
+	private String oldValue;
 	
 	public Calculator() {
 		result = "";
@@ -23,5 +24,11 @@ public class Calculator {
 		this.result = result;
 	}
 	
+	public String getOldValue() {
+		return oldValue;
+	}
+	public void setOldValue(String oldValue) {
+		this.oldValue = oldValue;
+	}
 	
 }
