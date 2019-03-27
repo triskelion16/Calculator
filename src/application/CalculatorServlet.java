@@ -56,13 +56,13 @@ public class CalculatorServlet extends HttpServlet {
 							}
 							break;
 						case "%":
-							calculator.setResult(String.valueOf((Double)Double.parseDouble(calculator.getResult()) /100));
+							calculator.setResult(Operations.percent(calculator.getResult()));
 							break;
 						case "+/-":
-							calculator.setResult(String.valueOf(Integer.parseInt(calculator.getResult()) * -1));
+							calculator.setResult(Operations.changeSign(calculator.getResult()));
 							break;
 						case "sqrt":
-							calculator.setResult(String.valueOf(Math.sqrt(Integer.parseInt(calculator.getResult()))));
+							calculator.setResult(Operations.sqrt(calculator.getResult()));
 							break;
 						default:
 							
@@ -75,14 +75,13 @@ public class CalculatorServlet extends HttpServlet {
 							} else if("/".equals(calculator.getOperation())) {
 								calculator.setResult(Operations.division(calculator.getOldValue(), calculator.getResult()));
 							}
-								
+							
 							calculator.setOldValue(calculator.getResult());
 							calculator.setOperation(request.getParameter("btn"));
 							newNumber = true;
 							break;
 						}
 					}
-					
 				} catch (Exception e) {
 					calculator.setResult("ERROR");
 					RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/error.jsp");
